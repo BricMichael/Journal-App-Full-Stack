@@ -9,6 +9,11 @@ html {
     width: 100vw;
 }
 
+a {
+    text-decoration: none;
+    color: $dark-grey;
+}
+
 main {
     width: 100%;
 }
