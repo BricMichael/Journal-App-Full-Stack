@@ -3,13 +3,21 @@
     border: none;
     color: $cl-white;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 16px;
     padding: 7px 10px;
-    width: 100%;
+    transition: color .3s ease;
 
    &:focus {
        outline: none;
    }
+
+   &:hover {
+       color: darken($color: $cl-white, $amount: 15);
+   }
+}
+
+.width {
+    width: 100%;
 }
 
 .btn-primary {

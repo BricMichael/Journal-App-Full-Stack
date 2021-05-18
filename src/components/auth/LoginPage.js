@@ -9,12 +9,12 @@ const LoginPage = () => {
                 <input type="text" className="auth__input" autoComplete="off" placeholder="Email" name="email" required/>
                 <input type="password" className="auth__input" placeholder="Password" name="password" required/>
 
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" className="btn btn-primary width">
                     Login
                 </button>
 
                 <div className="auth__social_networks">
-                    <p>Login with social networks</p>
+                    <p>Login with social networks *</p>
                     <div 
                         className="google-btn"
                     >
@@ -27,7 +27,7 @@ const LoginPage = () => {
                     </div>
                 </div>
 
-                <Link to="/auth/register" >Create new account</Link>
+                <Link to="/auth/register" className="link">Create new account</Link>
 
             </form>
 

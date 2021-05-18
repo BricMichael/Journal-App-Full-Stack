@@ -1,9 +1,20 @@
+// import NothingSelected from "./NothingSelected";
+import NoteScreen from "../notes/NoteScreen";
+import Sidebar from "./Sidebar";
 
 
 const ScreenJournal = () => {
     return (
-        <div>
-            <h1>Journal Screen</h1>
+        <div className="journal__main-content">
+            
+            <Sidebar  />
+
+            <main>
+                {/* <NothingSelected /> */}
+
+
+                <NoteScreen />
+            </main>
         </div>
     )
 }
