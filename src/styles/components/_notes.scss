@@ -14,3 +14,45 @@
     padding: 10px 20px;
     color: $cl-white;
 }
+
+.notes__content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 20px;  
+    width: 80%;
+}
+
+.notes__title_input {
+    color: $dark-grey;
+    font-size: 25px;
+    font-weight: 700px;
+    margin-bottom: 10px;
+    padding: 2px 5px;
+    border: none;
+    border-left: 3px solid $primary;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.notes__textarea {
+    border: none;
+    color: $dark-grey;
+    font-size: 20px;
+    flex: 1 1 auto;
+    resize: none;
+    padding: 3px;
+}
+
+.notes__image {
+    margin: auto;
+
+    & > img {
+        box-shadow: 3px 3px $dark-grey;
+    height: 150px;
+    }
+    
+}
+
