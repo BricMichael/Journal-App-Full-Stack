@@ -9,7 +9,7 @@ const AuthRouter = () => {
             <div className="auth_box-contain">
                 <Switch>
                     <Route path="/auth/login" component={ LoginPage }/>
-                    <Route path="/auth/register" component={ RegisterPage } />
+                    <Route exact path="/auth/register" component={ RegisterPage } />
 
                     <Redirect to="/auth/login" />
                 </Switch>   

@@ -13,7 +13,7 @@ const NoteScreen = () => {
             </div>
 
             <div className="notes__image">
-                <img src="https://ugc.kn3.net/i/760x/http://img8.uploadhouse.com/fileuploads/15294/15294438b5ab0dd6dda2d9c190f9d7de4fa165e9.jpg" alt="event image"></img>
+                <img src="https://ugc.kn3.net/i/760x/http://img8.uploadhouse.com/fileuploads/15294/15294438b5ab0dd6dda2d9c190f9d7de4fa165e9.jpg" alt="event day" />
             </div>
             
         </div>
