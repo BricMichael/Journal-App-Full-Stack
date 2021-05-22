@@ -26,7 +26,7 @@
 ![screenshot](https://github.com/BricMichael/Images-Projects/blob/master/HomePageAppJournal.png?raw=true)
 
 
-Aplicación Full Stack con la Pila MERN. JournalApp. Calendario que te permite gestionar tus fechas y eventos importantes. JavaScript | React | NodeJs | Mongo| Firebase | Express | Redux.
+Aplicación Full Stack con la Pila MERN. JournalApp. Calendario que te permite gestionar tus fechas y eventos importantes. SASS | React | NodeJs | Mongo| Firebase | Express | Redux 
 
 ![screenshot](https://github.com/BricMichael/Images-Projects/blob/master/LoginJournalApp.png?raw=true)
 
