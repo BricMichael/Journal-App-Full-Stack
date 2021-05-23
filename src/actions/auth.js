@@ -1,15 +1,20 @@
 import {firebase, googleAuthProvider} from '../Firebase/firebaseConfig';
 import { types } from '../types/types'
+import { StartLoading, FinishLoading } from './uiActions';
 
 
 export const startLoginEmailPassw = ( email, password) => {
     return (dispatch) => {  // thunk nos ofrece este dispatch 
-        firebase.auth().signInWithEmailAndPassword( email, password )
-            .then(( { user }) => {
-                 dispatch( Login( user.uid, user.displayName ) )
+        dispatch( StartLoading() )
 
+        firebase.auth().signInWithEmailAndPassword( email, password )
+            .then(( { user }) => {         
+                dispatch( Login( user.uid, user.displayName ) );
+                dispatch( FinishLoading() );
             } )
-            .catch( err => console.log(err) )   
+            .catch( err =>{
+                console.log(err) }); 
+                dispatch( FinishLoading() );
     }        
 }
 

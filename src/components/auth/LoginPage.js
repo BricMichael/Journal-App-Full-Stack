@@ -10,7 +10,7 @@ import { useForm } from '../../hooks/useForm';
 const LoginPage = () => {
 
     const dispatch = useDispatch();
-    const { msgError } = useSelector( state => state.ui)
+    const { msgError, loading } = useSelector( state => state.ui)
 
     const [ values, handleInputChange ] = useForm({
         email: '',
@@ -41,7 +41,7 @@ const LoginPage = () => {
             return false;
         }
 
-        dispatch( removeError() )
+        if( msgError ) dispatch( removeError() )
         return true
     }
 
@@ -62,8 +62,8 @@ const LoginPage = () => {
                 <input type="text" value={ email } className="auth__input" autoComplete="off" onChange={ handleInputChange  } placeholder="Email" name="email" required />
                 <input type="password" value={ password } className="auth__input" onChange={ handleInputChange  } placeholder="Password" name="password" required />
 
-                <button type="submit" className="btn btn-primary width">
-                    Login
+                <button type="submit" className="btn btn-primary width" disabled={ loading }>
+                            Login
                 </button>
 
                 <div className="auth__social_networks">
