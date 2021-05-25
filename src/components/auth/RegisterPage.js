@@ -13,10 +13,10 @@ const RegisterPage = () => {
     const { msgError } = useSelector( state  => state.ui) //ui es un reducer
 
     const [values, handleInputChange] = useForm({
-        name: 'Michael',
-        email: 'bricHH@gmail.com',
-        password: '45678aa',
-        password2: '45678aa'
+        name: '',
+        email: '',
+        password: '',
+        password2: ''
     })
 
     const { name, email, password, password2 } = values
@@ -32,7 +32,7 @@ const RegisterPage = () => {
         // -------------------------------------
     const isFormValid = () => {  //validar formulario
 
-        if( name.trim().length <= 1 ){
+        if( name.trim().length <= 2 ){
             dispatch( setError('Name is required') );
             return false;
         }

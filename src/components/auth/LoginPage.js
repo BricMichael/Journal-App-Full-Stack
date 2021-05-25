@@ -4,7 +4,7 @@ import validator from 'validator';
 import { startGoogleLogin, startLoginEmailPassw } from '../../actions/auth'; //actions
 import { setError, removeError } from '../../actions/uiActions';
 import { useForm } from '../../hooks/useForm';
-
+import Swal from 'sweetalert2';
 
 
 const LoginPage = () => {
@@ -34,10 +34,12 @@ const LoginPage = () => {
 
         if( !validator.isEmail( email ) ) {
             dispatch( setError('Email is not valid') );
+            Swal.fire('Error in Email', 'Email is not valid' , 'error');
             return false;
         }
         if( password.length <= 5 ){
-            dispatch( setError('Your passwords must match and be longer than 6 characters') );    
+            dispatch( setError('Your password must be longer than 6 characters.') );    
+            Swal.fire('Password failed', 'You password must match and be longer than 6 characters.' , 'error');
             return false;
         }
 

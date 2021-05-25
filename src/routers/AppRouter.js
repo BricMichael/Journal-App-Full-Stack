@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 import ScreenJournal from '../components/journal/ScreenJournal';
 import AuthRouter from './AuthRouter';
 import { firebase } from '../Firebase/firebaseConfig'
 import { useDispatch } from 'react-redux';
 import { Login } from '../actions/auth';
+import PrivateRoute from './PrivateRoute';
+import { PublicRoute } from './PublicRoute';
 
 const AppRouter = () => {
 
@@ -30,7 +32,7 @@ const AppRouter = () => {
        });
 
 
-    }, [ dispatch, setCheking, setCheking ]) //lo que usa el useEffect
+    }, [ dispatch, setCheking ]) //lo que usa el useEffect
 
 
     if ( cheking ) {  //Vista de aviso de que se esta confirmando su auth
@@ -46,8 +48,17 @@ const AppRouter = () => {
         <Router>
             <div>
                 <Switch>
-                    <Route path="/auth" component={ AuthRouter } />
-                    <Route exact path="/" component={ ScreenJournal } />
+                    {/* <Route path="/auth" component={ AuthRouter } /> */}
+                    {/* <Route exact path="/" component={ ScreenJournal } /> */}
+
+                    <PublicRoute isLoggedIn= { isLoggedIn } component = { AuthRouter }  path = '/auth' />
+
+
+                    <PrivateRoute 
+                        isLoggedIn = { isLoggedIn }  // el path y exact no se espera como props exactas asi que cae en el ...rest
+                        component = { ScreenJournal } 
+                        path="/"
+                    />
 
                     <Redirect to="/auth/login" />
                 </Switch>

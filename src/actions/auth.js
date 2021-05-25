@@ -1,7 +1,9 @@
 import {firebase, googleAuthProvider} from '../Firebase/firebaseConfig';
 import { types } from '../types/types'
 import { StartLoading, FinishLoading } from './uiActions';
+import Swal from 'sweetalert2';
 
+let alertError = 'Unidentified user, invalid email or password, please try again.'
 
 export const startLoginEmailPassw = ( email, password) => {
     return (dispatch) => {  // thunk nos ofrece este dispatch 
@@ -13,8 +15,10 @@ export const startLoginEmailPassw = ( email, password) => {
                 dispatch( FinishLoading() );
             } )
             .catch( err =>{
-                console.log(err) }); 
-                dispatch( FinishLoading() );
+                console.log(err); 
+                dispatch( FinishLoading() )
+                Swal.fire('Error', alertError , 'error');
+            });
     }        
 }
 
@@ -28,9 +32,10 @@ export const registerUser = ( email, password, name ) => {
                 dispatch( Login( user.uid, user.displayName ) )
 
             })
-            .catch(e => console.log(e))
-                
-            
+            .catch(e => {
+                console.log(e);
+                Swal.fire('Error', e.message , 'error');
+            })       
 
     }
 }
@@ -41,7 +46,6 @@ export const startGoogleLogin = () => {
     return (dispatch) => {
         firebase.auth().signInWithPopup( googleAuthProvider )
             .then( ({ user }) => {
-                console.log(user)
                 dispatch(
                     Login( user.uid, user.displayName)
                 )
@@ -49,14 +53,21 @@ export const startGoogleLogin = () => {
     }
 }
 
-
-
-
 export const Login = ( uid, displayName ) => ({
     type: types.login,
     payload: {
         uid,
         displayName
     }
-})
+});
+
+export const startLogout = () => {
+    return async( dispatch ) => {
+        await firebase.auth().signOut();
+        
+        dispatch( Logout() )       
+    }
+};
+
+export const Logout = () => ({ type: types.logout })
 
