@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { Login } from '../actions/auth';
 import PrivateRoute from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
+import { startLoadingNotes } from '../actions/notesActions'
 
 const AppRouter = () => {
 
@@ -15,15 +16,16 @@ const AppRouter = () => {
 
     const [ isLoggedIn, setIsLoggedIn ] = useState(false) // Privacidad a las rutas
 
-    
 
     useEffect(() => {
         // Funcion que permite estar a la escucha de las acciones de auth del user
-       firebase.auth().onAuthStateChanged( user => { // se ejecuta siempre que la autenticacion tiene un cambio
+       firebase.auth().onAuthStateChanged( async( user )=> { // se ejecuta siempre que la autenticacion tiene un cambio
 
         if( user?.uid ){ //el signo de ? evalua si el user tiene algo y si es así, evalua el uid
             dispatch( Login( user.uid, user.displayName ) );
-            setIsLoggedIn(true) 
+            setIsLoggedIn(true)
+            dispatch( startLoadingNotes(user.uid))
+
         }else{
             setIsLoggedIn(false)
         }

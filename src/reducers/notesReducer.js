@@ -1,5 +1,7 @@
 // estructura de este reducer
 
+import { types } from "../types/types";
+
 // {
 //     notes: [],
 //     active: null, notas en null aparce la screen morada de agg new nota
@@ -20,7 +22,18 @@ const initialState = {
 export const notesReducer = (state = initialState, action) => {
     
     switch (action.type) {
-
+        case types.notesActive:
+            return {
+                ...state, //regresar un new state y no mutar el anterior
+                active: {
+                    ...action.payload  // se le pasa TODO el objecto que viene en payload
+                }
+            }
+        case types.notesLoad:
+            return {
+                ...state,
+                notes: [ ...action.payload ]
+            }
         
     
         default:

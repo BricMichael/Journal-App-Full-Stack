@@ -6,7 +6,7 @@ import Sidebar from "./Sidebar";
 
 const ScreenJournal = () => {
 
-    const { notes, active } = useSelector( state => state.notes )
+    const { active } = useSelector( state => state.notes )
 
     return (
         <div className="journal__main-content">
