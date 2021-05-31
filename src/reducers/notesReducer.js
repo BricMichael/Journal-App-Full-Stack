@@ -1,7 +1,7 @@
-// estructura de este reducer
+
 
 import { types } from "../types/types";
-
+// estructura de este reducer
 // {
 //     notes: [],
 //     active: null, notas en null aparce la screen morada de agg new nota

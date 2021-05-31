@@ -1,24 +1,39 @@
+import moment from 'moment';
+import { useDispatch } from 'react-redux';
+import { activeNote } from '../../actions/notesActions';
 
 
-const JournalEntry = () => {
+const JournalEntry = ({ id, body, date, title, url }) => {
+
+    const noteDate = moment(date);
+    const dispatch = useDispatch();
+   
+    const handleEntryClick = () => {
+        dispatch( activeNote(id, { body, date, title }) )
+    }
+
     return (
-        <div className="journal__entry container">
-            <div 
-            className="journal__entry_picture"
-            style={{
-                backgroundSize: 'cover',
-                backgroundImage: 'url(https://m.media-amazon.com/images/I/81gQraBrBZL._SS500_.jpg)'
-            }}
-            ></div> {/* End row div */}
+        <div className="journal__entry container" onClick={ handleEntryClick }>
+
+            { url &&
+                <div className="journal__entry_picture"
+                style={{
+                    backgroundSize: 'cover',
+                    backgroundImage: `url(${url})`
+                }}
+                >         
+                </div> 
+            }
             
             <div className="journal__entry-body">
-                <p className="journal__entry_parrafo">Birthday</p>
-                <p className="journal__entry_content">Sofia's Birthday</p>
+                <p className="journal__entry_parrafo">{ title }</p>
+                <p className="journal__entry_content">{ body }</p>
             </div>
 
             <div className="journal__entry-date-box">
-                <span>Monday</span>
-                <h4>22</h4>
+                <span>{ noteDate.format('dddd') }</span> {/*(dia) fecha que fue creada */}
+                
+                <h4>{ noteDate.format('Do') }</h4>{/*(dia en numero delm mes) fecha que fue creada */}
             </div>
           
         </div>

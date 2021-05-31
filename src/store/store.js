@@ -1,6 +1,6 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
-import { authReducer } from '../reducers/authReducer';
 import thunk from 'redux-thunk';
+import { authReducer } from '../reducers/authReducer';
 import { uiReducer } from '../reducers/uiReducer';
 import { notesReducer } from '../reducers/notesReducer';
 
