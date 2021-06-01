@@ -39,3 +39,17 @@ export const setNotes = (notes) => ({
     type: types.notesLoad,
     payload: notes
 })
+
+export const saveDataChanges = (note) => async( dispatch, getState ) => {
+
+    const uidUser = getState().auth.uid // accedo a todos los estados del reducer, accedo al reducer auth y luego a su propiedad auth
+
+    if ( !note.url ) delete note.url;
+
+     const noteToFirestore = {...note}
+    delete noteToFirestore.id;
+
+    await db.doc(`${ uidUser }/journal/notes/${ note.id }`).update( noteToFirestore )
+
+
+}
