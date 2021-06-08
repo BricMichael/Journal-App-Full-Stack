@@ -1,3 +1,4 @@
+import moment, { isMoment } from "moment";
 import { useDispatch, useSelector } from "react-redux";
 import { saveDataChanges, startUpLoading } from '../../actions/notesActions';
 
@@ -6,6 +7,9 @@ const NotesAppBar = () => {
 
     const dispatch = useDispatch();
     const { active } = useSelector( state => state.notes )
+
+    const today = moment().format('dddd'); // nombre del dia
+    const date = moment().format('YYYY-MM-DD'); // formato año/mes/dia
 
     const handleSaveData = () => {
         dispatch( saveDataChanges( active ) )
@@ -24,7 +28,7 @@ const NotesAppBar = () => {
 
     return (
         <div className="notes__appbar">
-            <span>05 August 2021</span>
+            <span>{`${today} ${date}`}</span>
 
             <input 
             id="id-file"
