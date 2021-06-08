@@ -2,6 +2,7 @@ import {firebase, googleAuthProvider} from '../Firebase/firebaseConfig';
 import { types } from '../types/types'
 import { StartLoading, FinishLoading } from './uiActions';
 import Swal from 'sweetalert2';
+import { noteLogout } from './notesActions';
 
 let alertError = 'Unidentified user, invalid email or password, please try again.'
 
@@ -65,7 +66,8 @@ export const startLogout = () => {
     return async( dispatch ) => {
         await firebase.auth().signOut();
         
-        dispatch( Logout() )       
+        dispatch( Logout() );
+        dispatch( noteLogout() );     
     }
 };
 

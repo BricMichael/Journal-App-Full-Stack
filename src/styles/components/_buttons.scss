@@ -33,7 +33,15 @@
     }
 }
 
+.btn-danger {
+    background-color: #c92525;
+    font-size: 1.4rem;
+    transition: background-color .2s ease;
 
+    &:hover {
+        background-color: darken($color: #c92525, $amount: 8);
+    }
+}
 
 .google-btn {
     cursor: pointer;
