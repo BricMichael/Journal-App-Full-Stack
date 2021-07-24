@@ -8,7 +8,7 @@
   <h3>
   <span> | </span>
     <a href="https://github.com/BricMichael" target='_blank' >
-      Dev- Front-end
+      Dev - Front-end
     </a>
     <span> | </span>
     <a href="journal-reactt.netlify.app">
