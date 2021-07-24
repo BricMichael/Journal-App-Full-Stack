@@ -11,7 +11,7 @@
       Dev- Front-end
     </a>
     <span> | </span>
-    <a href="https://heeroes-app.netlify.app">
+    <a href="journal-reactt.netlify.app">
       Sitio JournalApp
     </a>
     <span> | </span>
